@@ -1,0 +1,21 @@
+#environment
+.env
+
+#node modules
+node_modules
+
+#build
+build
+dist
+
+#test
+test
+coverage
+
+#docker
+docker-compose.yml
+docker-compose-dev.yml
+
+#IDE
+.idea
+*.iml   

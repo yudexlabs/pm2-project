@@ -1,5 +1,4 @@
 #!/bin/bash
-
 FILE_LOG="deploy.log"
 
 # clear log

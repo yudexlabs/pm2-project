@@ -30,18 +30,7 @@ jobs:
                     cd /home/ubuntu/pm2-project
                     echo "Pulling latest changes..."
                     git pull
-                    echo "Installing dependencies..."
-                    npm install --force --silent
-                    echo "Building..."
-                    npm run build
-                    # echo unit tests
-                    # npm run test
-                    echo "Deploying..."
-                    echo "pm2 reload"
-                    if pm2 list | grep -q 'online'; then #verifica si hay un servicio corriendo
-                      pm2 reload ecosystem.config.js --env production
-                    else
-                      npm run deploy
-                    fi
+                    echo "running deploy.sh..."
+                    bash deploy.sh
                     echo "deploy successful!"
               continue-on-error: false   

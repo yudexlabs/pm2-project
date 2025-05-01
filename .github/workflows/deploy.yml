@@ -21,6 +21,12 @@ jobs:
                   port: ${{ secrets.SERVER_PORT }}
                   script: |
                     set -e #detects errors and stops execution
+
+                    # Cargar entorno de nvm y usar Node.js 20
+                    export NVM_DIR="$HOME/.nvm"
+                    source "$NVM_DIR/nvm.sh"
+                    nvm use 20.14.0
+
                     cd /home/ubuntu/pm2-project
                     echo "Pulling latest changes..."
                     git pull

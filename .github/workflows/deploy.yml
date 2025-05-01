@@ -12,11 +12,30 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2
 
-            - name: Install dependencies
-              run: npm install
-
-            - name: Build
-              run: npm run build
-
-            - name: Deploy
-              run: echo "Deploying..."
+            - name: connect to server
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.SERVER_HOST }}
+                  username: ${{ secrets.SERVER_USER }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  port: ${{ secrets.SERVER_PORT }}
+                  script: |
+                    set -e #detects errors and stops execution
+                    cd /home/ubuntu/pm2-project
+                    echo "Pulling latest changes..."
+                    git pull
+                    echo "Installing dependencies..."
+                    npm install --force --silent
+                    echo "Building..."
+                    npm run build
+                    # echo unit tests
+                    # npm run test
+                    echo "Deploying..."
+                    echo "pm2 reload"
+                    if pm2 list | grep -q 'online'; then #verifica si hay un servicio corriendo
+                      pm2 reload ecosystem.config.js --env production
+                    else
+                      npm run deploy
+                    fi
+                    echo "deploy successful!"
+              continue-on-error: false   

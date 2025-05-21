@@ -1,9 +1,36 @@
+<<<<<<< HEAD
 # Logs
+=======
+#environment
+.env
+
+#node modules
+node_modules
+
+#build
+build
+dist
+
+#test
+test
+coverage
+
+#docker
+docker-compose.yml
+docker-compose-dev.yml
+
+#IDE
+.idea
+*.iml   
+
+#logs
+>>>>>>> 97914e612e87925991d472be32591eac16a7f13c
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 lerna-debug.log*
 .pnpm-debug.log*
 
@@ -134,3 +161,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+=======
+deploy.log
+>>>>>>> 97914e612e87925991d472be32591eac16a7f13c

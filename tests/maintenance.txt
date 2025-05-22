@@ -1,0 +1,29 @@
+# para ejecutar una prueba de estress
+
+locust -f ./tests/stress_test.py \
+  --host http://localhost:5001 \
+  --users 100 \
+  --spawn-rate 10 \
+  --run-time 1m \
+  --headless\
+  --csv resultados
+
+
+--host: URL base del api.
+
+--users: Número total de usuarios concurrentes (por ejemplo, 100).
+
+--spawn-rate: Cuántos usuarios por segundo se agregan hasta llegar a 100.
+
+--run-time: Duración total de la prueba (1m, 30s, 2h, etc.).
+
+--headless: Ejecuta sin interfaz web.
+
+
+
+locust -f ./tests/stress_test.py --host http://localhost:5001--users 100 --spawn-rate 10 --run-time 1m --headless --csv resultados
+
+#generar prueba con interfaz web
+locust -f ./tests/stress_test.py
+
+http://localhost:8089
